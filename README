@@ -1,5 +1,5 @@
 该插件通过参考Firesize的源码更改而来，
-Firesize源码地址：https://github.com/justindarc/firesize。
+Firesize源码地址：https://github.com/justindarc/firesize
 
 更改的原因：用WebExtensions改写以及兼容Firefox多进程。
 
