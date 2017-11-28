@@ -1,0 +1,10 @@
+该插件通过参考Firesize的源码更改而来，
+Firesize源码地址：https://github.com/justindarc/firesize。
+
+更改的原因：用WebExtensions改写以及兼容Firefox多进程。
+
+插件作用：改变浏览器窗口为预设的尺寸。
+
+
+Resizes the browser window to match customizable dimensions
+Quote：https://github.com/justindarc/firesize
