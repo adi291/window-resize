@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Window Resize",
-	"version": "1.0",
+	"version": "1.1",
 	"description": "调整浏览器窗口为预设的指定大小！",
 	
 	"icons": {
@@ -29,10 +29,10 @@
 	
 	"permissions": ["storage"],
 	
-	"applications": {
-		"gecko": {
-			"id": "windowresize@monti",
-			"strict_min_version": "42.0"
-		}
-	}
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "windowresize@monti",
+      "strict_min_version": "54.0"
+    }
+  }
 }

@@ -1,57 +1,45 @@
-var defaultVal = '1920x1080,1600x900';
+var defaultVal = { '1600x900': { w: 1600, h: 900 } };
 var liList = document.querySelector("#size-list");
 
 function appendToList(size) {
-	var li = document.createElement('li');
-	var a = document.createElement('a');
-	a.dataset.width = size.width;
-	a.dataset.height = size.height;
-	a.textContent = size.width + ' x ' + size.height;
-	li.appendChild(a);
-	liList.appendChild(li);
+  var li = document.createElement('li');
+  var a = document.createElement('a');
+  a.dataset.width = size.w;
+  a.dataset.height = size.h;
+  a.textContent = size.w + ' x ' + size.h;
+  li.appendChild(a);
+  liList.appendChild(li);
 };
 
 function init(data) {
-	var sizeStr = data.sizeVal || defaultVal;
-	
-	var sizes = sizeStr.split(',').map(function(size){
-		var parts = size.split('x');
-		var width = parseInt(parts[0] || '0');
-		var height = parseInt(parts[1] || '0');
-		
-		if (!width || !height) {
-			return null;
-		}
+  var sizes = data.sizes || defaultVal;
+  console.info(sizes);
 
-		return { width: width, height: height };
-	});
-	
-	sizes = sizes.filter(function(size) {
-		return !!size;
-	});
-	
-	liList.innerHTML = '';
-	
-	sizes.forEach(function(size) {
-		appendToList(size);
-	});
+  liList.innerHTML = '';
+
+  for (const key in sizes) {
+    const obj = sizes[key];
+    if (!obj.w || !obj.h)
+      continue;
+    appendToList(obj);
+  }
 }
 
-browser.storage.sync.get('sizeVal').then(init);
+browser.storage.sync.get('sizes').then(init);
 
 liList.addEventListener("click", (e) => {
-	if(e.target.nodeName != "A") {
-		window.close();
-		return;
-	}
-	var w = parseInt(e.target.dataset.width || '0');
-	var h = parseInt(e.target.dataset.height || '0');
-	if(w == 0 || h == 0) {
-		return;
-	}
-	browser.windows.getCurrent().then((curr) => {
-		var size = { width: w, height: h };
-		browser.windows.update(curr.id, size);
-		window.close();
-	});
+  if (e.target.nodeName != "A") {
+    window.close();
+    return;
+  }
+  var w = parseInt(e.target.dataset.width || '0');
+  var h = parseInt(e.target.dataset.height || '0');
+  if (w == 0 || h == 0) {
+    return;
+  }
+  browser.windows.getCurrent().then((curr) => {
+    var size = { width: w, height: h };
+    browser.windows.update(curr.id, size);
+    window.close();
+  });
 });

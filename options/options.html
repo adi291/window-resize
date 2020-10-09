@@ -1,23 +1,79 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
-	<meta charset="utf-8" />
-	<style>
-		* {
-			font-size: 16px;
-		}
-		body {
-			height: 32px;
-		}
-		input[type=text] {
-			width: 800px;
-			padding: 5px 8px;
-		}
-	</style>
+  <meta charset="utf-8" />
+  <style type="text/css">
+    * {
+      font-size: 16px;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    input[type=text] {
+      width: 80px;
+      padding: 4px 5px;
+      text-align: center;
+    }
+
+    button {
+      padding: 3px 10px;
+      cursor: pointer;
+    }
+
+    table {
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    .show {
+      margin-top: 10px;
+    }
+
+    .show td {
+      padding: 5px 0;
+      border-bottom: 1px solid #888;
+    }
+
+    .show img {
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body>
-	<span>Sizes:&emsp;</span><input type="text" id="size" pattern="[0-9]{1,4}[Xx][0-9]{1,4}(,[0-9]{1,4}[Xx][0-9]{1,4})*" />
-	<script src="options.js"></script>
+  <div class="show">
+    <table id="table">
+      <colgroup>
+        <col width="94px" />
+        <col width="20px" />
+        <col width="94px" />
+        <col width="60px" />
+      </colgroup>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div style="margin: 20px 0 0 1px">
+    <table>
+      <colgroup>
+        <col width="94px" />
+        <col width="20px" />
+        <col width="94px" />
+        <col width="60px" />
+      </colgroup>
+      <tbody>
+        <tr>
+          <td><input type="text" id="size_w" maxlength="4" pattern="[0-9]{1,4}" /></td>
+          <td>X</td>
+          <td><input type="text" id="size_h" maxlength="4" pattern="[0-9]{1,4}" /></td>
+          <td><button id="add">Add</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="options.js"></script>
 </body>
+
 </html>
